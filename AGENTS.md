@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Use TanStack file routes and shared studio navigation/footer for every page; this preserves the template's routing and a consistent site experience.
+- Keep all photography URLs in src/assets/images.ts backed by asset pointers; this makes image replacement independent of page layout.
+- Define the editorial design through semantic tokens and shared styles in src/styles.css; this keeps every page visually consistent.
