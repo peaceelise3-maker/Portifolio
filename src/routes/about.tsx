@@ -1,0 +1,6 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { Eyebrow, AboutBlock, CTA } from '@/components/studio';
+import { siteMeta } from '@/lib/site-meta';
+import { images } from '@/assets/images';
+export const Route=createFileRoute('/about')({head:()=>siteMeta('Meet Anne','Meet the creative mind behind Anne Studio and its thoughtful, personal approach to design.',images.hero),component:About});
+function About(){return <><section className="container page-heading"><Eyebrow>The heart behind the studio</Eyebrow><h1>A creative mind.<br/><em>A thoughtful heart.</em></h1><p>Design is more than the way something looks. It’s the way it makes you feel.</p></section><AboutBlock/><section className="container detail-content"><div><Eyebrow>What I believe</Eyebrow><h2>The most beautiful work<br/><em>starts with connection.</em></h2></div><div><p>I’m drawn to the little details: a considered color, a beautiful typeface, a story told with honesty. My work brings those details together to build something that feels truly yours.</p><div className="detail-list">{['Visual identity & art direction','Typography & color','Website design & user experience','Collaboration & creative problem-solving'].map(skill=><div key={skill}>{skill}</div>)}</div></div></section><CTA/></>;}
