@@ -1,4 +1,5 @@
 # Website recreation
-- [ ] Recreate reference design, imagery and long homepage.
-- [ ] Add linked portfolio and supporting navigation pages.
-- [ ] Verify desktop, mobile and navigation.
+- [x] Recreate reference design, imagery and long homepage.
+- [x] Add linked portfolio and supporting navigation pages.
+- [x] Verify desktop, mobile and navigation.
+- [ ] Enable inquiry delivery and newsletter signup — awaiting the studio’s contact destination or mailing service.
