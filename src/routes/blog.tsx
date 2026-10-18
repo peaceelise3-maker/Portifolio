@@ -1,6 +1,43 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Eyebrow, CTA } from '@/components/studio';
-import { images } from '@/assets/images';
-import { siteMeta } from '@/lib/site-meta';
-export const Route=createFileRoute('/blog')({head:()=>siteMeta('The Journal','A few thoughts on thoughtful branding, meaningful design and beautiful beginnings.'),component:Journal});
-function Journal(){const articles=[['Building a brand that feels like you',images.botanicals,'Your brand starts with your story. Before the colors and the typography, take a moment to think about what you believe, who you want to connect with, and how you want them to feel. A thoughtful identity is a reflection of those answers.'],['Less, but a little more meaningful',images.living,'Space gives the important things room to breathe. A simple palette, intentional typography, and a few beautiful images can say more than a crowded page. The magic is in choosing what matters and letting it shine.'],['Is your website ready for your next chapter?',images.about,'As your business grows, your online home should grow with it. Look at your website with fresh eyes: does it tell your story clearly, welcome the right people, and make the next step feel natural?']];return <><section className="container page-heading"><Eyebrow>A note from the studio</Eyebrow><h1>A few thoughts,<br/><em>from the heart.</em></h1><p>A little inspiration, a little perspective, and a few things worth sharing.</p></section><section className="container journal-grid">{articles.map(([title,image,text])=><article key={title}><img src={image} alt={title} loading="lazy"/><Eyebrow>Design notes</Eyebrow><h3>{title}</h3><p>{text}</p></article>)}</section><CTA/></>;}
+import { createFileRoute } from "@tanstack/react-router";
+import { Eyebrow, CTA } from "@/components/studio";
+import { siteMeta } from "@/lib/site-meta";
+export const Route = createFileRoute("/blog")({
+  head: () =>
+    siteMeta(
+      "Learning journal",
+      "Updates to be added as IRAKOZE PEACE ELISE continues her nursing studies.",
+    ),
+  component: Journal,
+});
+function Journal() {
+  return (
+    <>
+      <section className="container page-heading">
+        <Eyebrow>Learning journal</Eyebrow>
+        <h1>
+          Reflections and notes,
+          <br />
+          <em>coming in time.</em>
+        </h1>
+        <p>I will share learning reflections here as I continue my nursing studies.</p>
+      </section>
+      <section className="container detail-content">
+        <div>
+          <Eyebrow>Portfolio in progress</Eyebrow>
+          <h2>
+            More to come
+            <br />
+            <em>as I learn.</em>
+          </h2>
+        </div>
+        <div>
+          <p>
+            No study notes or clinical experiences have been published yet. This page will be
+            updated with my own reflections when they are ready.
+          </p>
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}

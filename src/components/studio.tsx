@@ -1,21 +1,183 @@
-import { Link } from '@tanstack/react-router';
-import { useState } from 'react';
-import { ArrowUpRight, ArrowRight, Menu, X, Flower2, Heart, Sparkles, Check, ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { images, projects } from '@/assets/images';
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowUpRight, Flower2, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { images } from "@/assets/images";
 
-export function Logo() { return <Link to="/" className="logo" aria-label="Anne Studio home">anne<span>studio</span><Flower2 size={18}/></Link>; }
-export function Header() {
- const [open, setOpen] = useState(false);
- const links = [{ to: '/', label: 'Home' }, { to: '/about', label: 'About' }, { to: '/services', label: 'Services' }, { to: '/portfolio', label: 'Portfolio' }, { to: '/blog', label: 'Journal' }] as const;
- return <><a className="skip-link" href="#main-content">Skip to content</a><header className="site-header"><div className="header-inner"><Logo/><nav aria-label="Main navigation" className="desktop-nav">{links.map(link => <Link key={link.to} to={link.to} activeOptions={{exact:true}} activeProps={{className:'active'}}>{link.label}</Link>)}</nav><Button asChild variant="studio" className="header-cta"><Link to="/contact">Let’s work together <ArrowUpRight/></Link></Button><Button variant="ghost" size="icon" className="menu-toggle" aria-label={open?'Close menu':'Open menu'} aria-expanded={open} onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</Button></div>{open&&<nav className="mobile-nav" aria-label="Mobile navigation">{links.map(link=><Link key={link.to} to={link.to} onClick={()=>setOpen(false)}>{link.label}</Link>)}<Link to="/contact" onClick={()=>setOpen(false)}>Let’s work together <ArrowUpRight size={16}/></Link></nav>}</header></>;
+export function Logo() {
+  return (
+    <Link to="/" className="logo" aria-label="Elise's portfolio home">
+      elise<span>portfolio</span>
+      <Flower2 size={18} />
+    </Link>
+  );
 }
-export function TextLink({to,children}: {to:'/'|'/about'|'/portfolio'|'/services'|'/contact'|'/blog';children:React.ReactNode}) { return <Link className="text-link" to={to}>{children}<ArrowUpRight size={16}/></Link>; }
-export function Eyebrow({children}: {children:React.ReactNode}) { return <p className="eyebrow">{children}</p>; }
-export function AboutBlock() { return <section className="about-section container" id="discover"><div className="about-photo"><img src={images.about} alt="A sunlit design studio with a blush website on a laptop" loading="lazy"/><div className="paper-note">a little intention.<br/><em>a lot of heart.</em></div></div><div className="about-copy"><Eyebrow>A little about the studio</Eyebrow><h2>Good design is beautiful.<br/><em>Great design feels like you.</em></h2><p>I’m Anne, a creative at heart and a believer in the magic of thoughtful design. I help passionate people turn their vision into a brand and website they’re proud to share.</p><p>Not just something pretty. Something personal, purposeful, and made to grow with you.</p><TextLink to="/about">More about me</TextLink><div className="values"><span><Heart/>Made with heart</span><span><Sparkles/>Thoughtfully crafted</span><span><Check/>Uniquely yours</span></div></div></section>; }
-export function ProjectGrid() { return <div className="project-grid">{projects.map(project=><article className="project" key={project.slug}><Link to="/portfolio/$slug" params={{slug:project.slug}} className="project-image"><img src={project.image} alt={`${project.title} creative portfolio concept`} loading="lazy"/></Link><Eyebrow>{project.category}</Eyebrow><Link to="/portfolio/$slug" params={{slug:project.slug}} className="project-title">{project.title}<ArrowUpRight size={18}/></Link></article>)}</div>; }
-export function ServicesBlock() { const services=[['Brand identity','A visual story that captures your essence, connects with your people, and feels unmistakably you.'],['Website design','Beautiful, intuitive online homes that turn curious visitors into meaningful connections.'],['Creative direction','A cohesive vision that brings every part of your brand together, from the big picture to the little details.']]; return <section className="services-band"><div className="container"><div className="section-heading"><Eyebrow>Thoughtful design, from the inside out</Eyebrow><h2>A little strategy. <em>A little soul.</em></h2></div><div className="services-grid">{services.map(([title,text],i)=><article className="service" key={title}><span className="service-number">0{i+1}</span><h3>{title}</h3><p>{text}</p><TextLink to="/services">Explore service</TextLink></article>)}</div></div></section>; }
-const quotes=[['Anne has a way of taking all the little ideas in your head and turning them into something more beautiful than you imagined.','Sophie M.','Lifestyle brand founder'],['Every detail felt considered. The result was a brand that finally felt like us — thoughtful, warm, and full of possibility.','Clara R.','Small business owner'],['From the first conversation to the final little detail, the whole experience was creative, collaborative, and genuinely lovely.','Emma L.','Creative entrepreneur']];
-export function Testimonial() {const [index,setIndex]=useState(0); const quote=quotes[index]; return <section className="testimonial container"><span className="quote-mark">“</span><div aria-live="polite"><Eyebrow>Kind words · illustrative stories</Eyebrow><blockquote>“{quote?.[0]}”</blockquote><div className="quote-person"><span className="person-initial">{quote?.[1]?.[0]}</span><span><strong>{quote?.[1]}</strong><small>{quote?.[2]}</small></span></div></div><div className="quote-controls"><Button variant="ghost" size="icon" aria-label="Previous testimonial" onClick={()=>setIndex((index+2)%3)}><ArrowLeft/></Button><span>0{index+1} / 03</span><Button variant="ghost" size="icon" aria-label="Next testimonial" onClick={()=>setIndex((index+1)%3)}><ArrowRight/></Button></div></section>; }
-export function CTA() {return <section className="cta-band"><div className="container cta-inner"><div><Eyebrow>Your next chapter starts here</Eyebrow><h2>Let’s make something<br/><em>beautiful together.</em></h2><p>A brand with soul. A website with purpose. A little magic, made just for you.</p><Button asChild variant="studio"><Link to="/contact">Tell me about your project<ArrowUpRight/></Link></Button></div><div className="cta-image"><img src={images.living} alt="Sculptural ceramics and olive branches in soft sunlight" loading="lazy"/><div className="paper-note">beautiful things<br/><em>begin with a hello.</em></div></div></div></section>;}
-export function Footer() {return <footer><div className="container footer-grid"><div><Logo/><p>Thoughtful design for dreamers,<br/>doers, and beautiful beginnings.</p><TextLink to="/contact">Say hello</TextLink></div><div><Eyebrow>Take a little look</Eyebrow><nav aria-label="Footer navigation"><Link to="/about">About</Link><Link to="/services">Services</Link><Link to="/portfolio">Portfolio</Link><Link to="/blog">Journal</Link></nav></div><div><Eyebrow>A note from the studio</Eyebrow><p>A little inspiration in your inbox.</p><Link className="newsletter-link" to="/contact">Your email address<ArrowRight size={19}/></Link></div></div><div className="container footer-bottom"><span>© 2026 Anne Studio. Made with intention.</span><span>Good things take a little heart.</span></div></footer>; }
+
+export function Header() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <header className="site-header">
+        <div className="header-inner">
+          <Logo />
+          <nav aria-label="Main navigation" className="desktop-nav">
+            <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "active" }}>
+              Home
+            </Link>
+            <Link to="/about" activeProps={{ className: "active" }}>
+              About
+            </Link>
+            <Link to="/portfolio" activeProps={{ className: "active" }}>
+              Portfolio
+            </Link>
+          </nav>
+          <Button asChild variant="studio" className="header-cta">
+            <Link to="/portfolio">
+              My learning journey <ArrowUpRight />
+            </Link>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="menu-toggle"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X /> : <Menu />}
+          </Button>
+        </div>
+        {open && (
+          <nav className="mobile-nav" aria-label="Mobile navigation">
+            <Link to="/" onClick={() => setOpen(false)}>
+              Home
+            </Link>
+            <Link to="/about" onClick={() => setOpen(false)}>
+              About
+            </Link>
+            <Link to="/portfolio" onClick={() => setOpen(false)}>
+              Portfolio
+            </Link>
+          </nav>
+        )}
+      </header>
+    </>
+  );
+}
+
+export function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="eyebrow">{children}</p>;
+}
+
+export function TextLink({
+  to,
+  children,
+}: {
+  to: "/" | "/about" | "/portfolio";
+  children: React.ReactNode;
+}) {
+  return (
+    <Link className="text-link" to={to}>
+      {children}
+      <ArrowUpRight size={16} />
+    </Link>
+  );
+}
+
+export function AboutBlock() {
+  return (
+    <section className="about-section container" id="discover">
+      <div className="about-photo about-photo--portrait">
+        <img src={images.about} alt="Portrait of IRAKOZE PEACE ELISE" loading="lazy" />
+        <div className="paper-note">
+          learning
+          <br />
+          <em>with care.</em>
+        </div>
+      </div>
+      <div className="about-copy">
+        <Eyebrow>A little about me</Eyebrow>
+        <h2>
+          A nursing student.
+          <br />
+          <em>Learning with purpose.</em>
+        </h2>
+        <p>
+          My name is IRAKOZE PEACE ELISE, and I study nursing. This portfolio is a place to share my
+          learning journey and the steps I take toward a future in nursing.
+        </p>
+        <TextLink to="/about">More about me</TextLink>
+        <div className="values">
+          <span>Nursing studies</span>
+          <span>Learning and growth</span>
+          <span>A future in care</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CTA() {
+  return (
+    <section className="cta-band">
+      <div className="container cta-inner">
+        <div>
+          <Eyebrow>My learning journey</Eyebrow>
+          <h2>
+            One step at a time.
+            <br />
+            <em>A future in nursing.</em>
+          </h2>
+          <p>I’m studying nursing and building my knowledge as I go.</p>
+          <Button asChild variant="studio">
+            <Link to="/portfolio">
+              Explore my portfolio <ArrowUpRight />
+            </Link>
+          </Button>
+        </div>
+        <div className="cta-image">
+          <img src={images.hero} alt="Portrait of IRAKOZE PEACE ELISE" loading="lazy" />
+          <div className="paper-note">
+            learning
+            <br />
+            <em>with purpose.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer>
+      <div className="container footer-grid">
+        <div>
+          <Logo />
+          <p>
+            A personal portfolio
+            <br />
+            about my nursing studies.
+          </p>
+          <TextLink to="/about">About me</TextLink>
+        </div>
+        <div>
+          <Eyebrow>Explore</Eyebrow>
+          <nav aria-label="Footer navigation">
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/portfolio">Portfolio</Link>
+          </nav>
+        </div>
+      </div>
+      <div className="container footer-bottom">
+        <span>© 2026 IRAKOZE PEACE ELISE</span>
+        <span>Nursing student portfolio</span>
+      </div>
+    </footer>
+  );
+}

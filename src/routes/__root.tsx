@@ -79,13 +79,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Anne Studio — Thoughtful design" },
-      { name: "description", content: "Thoughtful brands and beautiful websites, made with intention." },
+      { title: "IRAKOZE PEACE ELISE | Nursing Student Portfolio" },
+      {
+        name: "description",
+        content:
+          "IRAKOZE PEACE ELISE is a nursing student sharing her healthcare learning journey, nursing studies, and future in patient care.",
+      },
+      {
+        name: "keywords",
+        content:
+          "IRAKOZE PEACE ELISE, nursing student, nursing student portfolio, healthcare student, student nurse, nursing studies, patient care, learning journey",
+      },
+      { name: "author", content: "IRAKOZE PEACE ELISE" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:site_name", content: "IRAKOZE PEACE ELISE Portfolio" },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: "IRAKOZE PEACE ELISE | Nursing Student Portfolio" },
+      {
+        property: "og:description",
+        content:
+          "IRAKOZE PEACE ELISE is a nursing student sharing her healthcare learning journey, nursing studies, and future in patient care.",
+      },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "IRAKOZE PEACE ELISE | Nursing Student Portfolio" },
+      {
+        name: "twitter:description",
+        content:
+          "IRAKOZE PEACE ELISE is a nursing student sharing her healthcare learning journey, nursing studies, and future in patient care.",
+      },
     ],
     links: [
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -119,7 +147,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <main id="main-content"><Outlet /></main>
+      <main id="main-content">
+        <Outlet />
+      </main>
       <Footer />
     </QueryClientProvider>
   );

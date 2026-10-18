@@ -1,5 +1,57 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Eyebrow, ServicesBlock, CTA } from '@/components/studio';
-import { siteMeta } from '@/lib/site-meta';
-export const Route=createFileRoute('/services')({head:()=>siteMeta('Creative Services','Brand identity, website design and creative direction, thoughtfully brought to life.'),component:Services});
-function Services(){return <><section className="container page-heading"><Eyebrow>Thoughtful design. Meaningful connection.</Eyebrow><h1>Your vision,<br/><em>thoughtfully brought to life.</em></h1><p>Whether you’re starting something new or ready for your next chapter, let’s create a brand and website that feels like you.</p></section><ServicesBlock/><section className="container detail-content"><div><Eyebrow>A collaborative journey</Eyebrow><h2>From a little idea<br/><em>to something beautiful.</em></h2></div><div className="detail-list">{[['01 · Discover','We get to know your vision, your people, and what makes you you.'],['02 · Create','Ideas become a considered creative direction and a thoughtful design.'],['03 · Refine','We shape the little details together until everything feels right.'],['04 · Celebrate','Your next chapter is ready to share with the world.']].map(([title,text])=><section key={title}><h3>{title}</h3><p>{text}</p></section>)}</div></section><CTA/></>;}
+import { createFileRoute } from "@tanstack/react-router";
+import { Eyebrow, CTA } from "@/components/studio";
+import { siteMeta } from "@/lib/site-meta";
+export const Route = createFileRoute("/services")({
+  head: () =>
+    siteMeta(
+      "Nursing Studies Journey",
+      "Follow IRAKOZE PEACE ELISE's nursing studies journey, healthcare learning, and patient-care focus through her portfolio.",
+      undefined,
+      {
+        url: "https://localhost:8081/services",
+        keywords:
+          "IRAKOZE PEACE ELISE, nursing studies, healthcare education, student nurse, patient care, nursing learning, nursing student portfolio",
+      },
+    ),
+  component: Studies,
+});
+function Studies() {
+  return (
+    <>
+      <section className="container page-heading">
+        <Eyebrow>My studies</Eyebrow>
+        <h1>
+          Learning about
+          <br />
+          <em>nursing.</em>
+        </h1>
+        <p>
+          I am studying nursing and sharing my healthcare learning journey as my portfolio develops,
+          with a focus on patient care, clinical learning, and professional growth.
+        </p>
+      </section>
+      <section className="container detail-content">
+        <div>
+          <Eyebrow>Learning journey</Eyebrow>
+          <h2>
+            One step
+            <br />
+            <em>at a time.</em>
+          </h2>
+        </div>
+        <div>
+          <p>
+            This page will grow with my nursing studies. I am learning through healthcare education,
+            patient care principles, and the development of practical understanding in a future
+            clinical career.
+          </p>
+          <div className="detail-list">
+            <div>Field of study: Nursing</div>
+            <div>Current stage: Student nurse</div>
+          </div>
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}

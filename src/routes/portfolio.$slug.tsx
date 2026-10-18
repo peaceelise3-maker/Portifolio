@@ -1,6 +1,18 @@
-import { createFileRoute, Link, notFound } from '@tanstack/react-router';
-import { projects } from '@/assets/images';
-import { Eyebrow, CTA, ProjectGrid } from '@/components/studio';
-import { siteMeta } from '@/lib/site-meta';
-export const Route = createFileRoute('/portfolio/$slug')({head:({params})=>{const project=projects.find(p=>p.slug===params.slug);return siteMeta(project?.title??'Project not found',project?.description??'Explore the Anne Studio portfolio.',project?.image);},notFoundComponent:()=> <section className="container page-heading"><h1>Project not found</h1><p><Link to="/portfolio">Explore the portfolio</Link></p></section>,component:ProjectDetail});
-function ProjectDetail(){const {slug}=Route.useParams();const project=projects.find(p=>p.slug===slug);if(!project)throw notFound();return <><section className="container page-heading"><div className="breadcrumb"><Link to="/">Home</Link> / <Link to="/portfolio">Portfolio</Link> / {project.title}</div><Eyebrow>{project.category}</Eyebrow><h1>{project.title}</h1><p>{project.description}</p></section><section className="container"><div className="detail-cover"><img src={project.image} alt={project.title}/></div><div className="detail-content"><div><Eyebrow>The intention</Eyebrow><h2>A beautiful story.<br/><em>A thoughtful experience.</em></h2><p>{project.description} A studio concept exploring how considered design can turn a simple idea into a distinctive, personal brand.</p></div><div><Eyebrow>The little details</Eyebrow><p>From the first impression to the smallest interaction, every element comes together to create a cohesive and welcoming experience.</p><div className="detail-list"><div><span>Creative focus</span><span>{project.category}</span></div><div><span>Deliverables</span><span>Identity · Art direction · Website</span></div><div><span>Project type</span><span>Studio concept</span></div></div></div></div><div className="section-top"><h2>More beautiful possibilities</h2></div><div className="portfolio-content"><ProjectGrid/></div></section><CTA/></>;}
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { siteMeta } from "@/lib/site-meta";
+export const Route = createFileRoute("/portfolio/$slug")({
+  head: () =>
+    siteMeta("Project not found", "This portfolio does not have a project at that address."),
+  notFoundComponent: () => (
+    <section className="container page-heading">
+      <h1>Project not found</h1>
+      <p>
+        <Link to="/portfolio">Explore my portfolio</Link>
+      </p>
+    </section>
+  ),
+  component: ProjectDetail,
+});
+function ProjectDetail() {
+  throw notFound();
+}

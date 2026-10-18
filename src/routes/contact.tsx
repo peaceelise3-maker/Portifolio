@@ -1,8 +1,53 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Eyebrow } from '@/components/studio';
-import { siteMeta } from '@/lib/site-meta';
-export const Route=createFileRoute('/contact')({head:()=>siteMeta('Say Hello','Tell Anne Studio about your vision for a thoughtful brand or beautiful website.'),component:Contact});
-function Contact(){const [prepared,setPrepared]=useState(false);return <><section className="container page-heading"><Eyebrow>Your next chapter starts here</Eyebrow><h1>Beautiful things<br/><em>begin with a hello.</em></h1><p>A new idea, a fresh start, or a beautiful possibility. I’d love to hear what you have in mind.</p></section><section className="container contact-layout"><div><Eyebrow>Let’s create together</Eyebrow><h2>Tell me a little<br/><em>about your dream.</em></h2><p>A thoughtful brand. A welcoming website. Something entirely new. Share your vision and let’s see where it takes us.</p></div><form className="contact-form" onSubmit={e=>{e.preventDefault();setPrepared(true);}}><label>Your name<input name="name" required autoComplete="name" placeholder="Your name"/></label><label>Email address<input name="email" type="email" required autoComplete="email" placeholder="you@example.com"/></label><label>What are you dreaming of?<select name="service"><option>Brand identity</option><option>Website design</option><option>Creative direction</option><option>A little of everything</option></select></label><label>A little about your project<textarea name="message" required placeholder="Your vision, your story, your beautiful idea…"/></label><Button variant="studio" type="submit">Prepare your inquiry<ArrowUpRight/></Button><p className="form-note" role="status">{prepared?'Your inquiry is ready. Sending will be available once the studio’s contact address is connected.':'The studio’s inquiry delivery is not connected yet.'}</p></form></section></>;}
+import { createFileRoute } from "@tanstack/react-router";
+import { Eyebrow, CTA } from "@/components/studio";
+import { siteMeta } from "@/lib/site-meta";
+export const Route = createFileRoute("/contact")({
+  head: () =>
+    siteMeta(
+      "Contact IRAKOZE PEACE ELISE",
+      "Learn more about IRAKOZE PEACE ELISE, a nursing student and healthcare learner, through her personal portfolio and learning journey.",
+      undefined,
+      {
+        url: "https://localhost:8081/contact",
+        keywords:
+          "IRAKOZE PEACE ELISE, nursing student, healthcare learner, patient care, nursing studies, portfolio contact, learning journey",
+      },
+    ),
+  component: Contact,
+});
+function Contact() {
+  return (
+    <>
+      <section className="container page-heading">
+        <Eyebrow>Contact</Eyebrow>
+        <h1>
+          Thank you for
+          <br />
+          <em>visiting my portfolio.</em>
+        </h1>
+        <p>
+          This personal portfolio does not publish direct contact details, but it shares the story of
+          a nursing student building a career in patient care and healthcare education.
+        </p>
+      </section>
+      <section className="container detail-content">
+        <div>
+          <Eyebrow>About this page</Eyebrow>
+          <h2>
+            A safe space
+            <br />
+            <em>to share my learning.</em>
+          </h2>
+        </div>
+        <div>
+          <p>
+            I am a nursing student and healthcare learner. This site shares information about my
+            learning journey, nursing studies, and future in patient care without publishing private
+            contact details.
+          </p>
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}
