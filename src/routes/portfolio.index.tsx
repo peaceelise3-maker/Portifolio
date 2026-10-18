@@ -8,7 +8,7 @@ export const Route = createFileRoute("/portfolio/")({
       "Explore the nursing student portfolio of IRAKOZE PEACE ELISE, highlighting her learning journey, healthcare education, and growth in patient care.",
       undefined,
       {
-        url: "https://localhost:8081/portfolio",
+        url: "https://irakozepeaceelise.netlify.app/portfolio",
         keywords:
           "IRAKOZE PEACE ELISE, nursing student portfolio, healthcare education, student nurse, patient care, learning journey, nursing studies",
       },

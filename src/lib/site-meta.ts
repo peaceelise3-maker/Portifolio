@@ -11,7 +11,7 @@ export function siteMeta(
   options: SiteMetaOptions = {},
 ) {
   const pageTitle = title.includes("IRAKOZE PEACE ELISE") ? title : `${title} | IRAKOZE PEACE ELISE`;
-  const canonicalUrl = options.url ?? "https://localhost:8081/";
+  const canonicalUrl = options.url ?? "https://irakozepeaceelise.netlify.app/";
   const keywords =
     options.keywords ??
     "IRAKOZE PEACE ELISE, nursing student, nursing student portfolio, healthcare student, student nurse, nursing studies, patient care, learning journey";

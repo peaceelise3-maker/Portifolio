@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
       "Learn more about IRAKOZE PEACE ELISE, a nursing student and healthcare learner, through her personal portfolio and learning journey.",
       undefined,
       {
-        url: "https://localhost:8081/contact",
+        url: "https://irakozepeaceelise.netlify.app/contact",
         keywords:
           "IRAKOZE PEACE ELISE, nursing student, healthcare learner, patient care, nursing studies, portfolio contact, learning journey",
       },

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/services")({
       "Follow IRAKOZE PEACE ELISE's nursing studies journey, healthcare learning, and patient-care focus through her portfolio.",
       undefined,
       {
-        url: "https://localhost:8081/services",
+        url: "https://irakozepeaceelise.netlify.app/services",
         keywords:
           "IRAKOZE PEACE ELISE, nursing studies, healthcare education, student nurse, patient care, nursing learning, nursing student portfolio",
       },

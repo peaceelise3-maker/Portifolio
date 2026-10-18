@@ -6,6 +6,8 @@ export const Route = createFileRoute("/blog")({
     siteMeta(
       "Learning journal",
       "Updates to be added as IRAKOZE PEACE ELISE continues her nursing studies.",
+      undefined,
+      { url: "https://irakozepeaceelise.netlify.app/blog" },
     ),
   component: Journal,
 });
